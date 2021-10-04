@@ -8,6 +8,7 @@ FROM
 INNER JOIN Categories c
 ON p.CategoryID = c.CategoryID;
 
+
 --Crear una vista llamada listadoProductos que muestre
 --el nombre del producto, categoria y proveedor
 --ordenados por nombre de categoria
@@ -21,9 +22,9 @@ FROM Products p
 INNER JOIN Categories c
 ON p.CategoryID = c.CategoryID;
 
-
 SELECT
 Producto, Categoria, Proveedor FROM listadoProductos ORDER BY Categoria;
+
 
 --Modificar la vista anterior de tal manera que
 --muestre los productos que esten o no inlcuidos en las ordenes
@@ -37,11 +38,12 @@ o.OrderID AS 'Orden'
 FROM Products p
 INNER JOIN Categories c
 ON p.CategoryID = c.CategoryID
-LEFT JOIN Orders o
-ON p.SupplierID = o.OrderID;
-
+LEFT JOIN [Order Details] o
+ON o.OrderID = o.OrderID;
 
 SELECT
 Producto, Categoria, Orden FROM listadoProductos ORDER BY Categoria;
 
+
 --Modificar la vista anterior utilizando full join
+
