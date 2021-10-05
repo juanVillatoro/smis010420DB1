@@ -47,3 +47,16 @@ Producto, Categoria, Orden FROM listadoProductos ORDER BY Categoria;
 
 --Modificar la vista anterior utilizando full join
 
+ALTER VIEW listadoProductos
+AS
+SELECT p.ProductName AS 'Producto', 
+c.CategoryName AS 'Categoria',
+o.OrderID AS 'Orden'
+FROM Products p
+FULL JOIN Categories c
+ON p.CategoryID = c.CategoryID
+FULL JOIN [Order Details] o
+ON o.OrderID = o.OrderID;
+
+SELECT
+Producto, Categoria, Orden FROM listadoProductos ORDER BY Categoria;
